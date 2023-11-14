@@ -20,10 +20,23 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+
         }
     }
 
     sourceSets {
+        val commonMain by sourceSets.getting {
+            dependencies {
+                implementation("co.touchlab.skie:configuration-annotations:0.5.5")
+                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+            }
+        }
+        /*commonMain {
+            dependencies {
+                implementation("co.touchlab.skie:configuration-annotations:0.5.5")
+                // implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.4")
+            }
+        }*/
         commonTest {
             dependencies {
                 implementation(kotlin("test-common"))
